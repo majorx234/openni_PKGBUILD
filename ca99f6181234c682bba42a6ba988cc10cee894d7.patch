@@ -1,0 +1,25 @@
+From ca99f6181234c682bba42a6ba988cc10cee894d7 Mon Sep 17 00:00:00 2001
+From: Dennis Hamester <dennis.hamester@gmail.com>
+Date: Mon, 3 Sep 2012 16:59:15 +0200
+Subject: [PATCH] Fixed compilation on linux with -ansi or -std option.
+
+---
+ Include/XnPlatform.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Include/XnPlatform.h b/Include/XnPlatform.h
+index b40497b..5dd8554 100644
+--- a/Include/XnPlatform.h
++++ b/Include/XnPlatform.h
+@@ -62,9 +62,9 @@
+ 	#include "Win32/XnPlatformWin32.h"
+ #elif defined(ANDROID) && defined(__arm__)
+ 	#include "Android-Arm/XnPlatformAndroid-Arm.h"
+-#elif (linux && (i386 || __x86_64__))
++#elif (__linux__ && (__i386__ || __x86_64__))
+ 	#include "Linux-x86/XnPlatformLinux-x86.h"
+-#elif (linux && __arm__)
++#elif (__linux__ && __arm__)
+ 	#include "Linux-Arm/XnPlatformLinux-Arm.h"
+ #elif _ARC
+ 	#include "ARC/XnPlatformARC.h"
